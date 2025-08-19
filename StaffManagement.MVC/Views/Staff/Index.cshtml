@@ -1,0 +1,81 @@
+﻿@model IEnumerable<StaffManagement.MVC.Models.Staff>
+@{
+    ViewData["Title"] = "Index";    
+}
+<style>
+    table th:nth-child(2),
+    table td:nth-child(2){
+        width: 20%;
+    }
+
+    table th:last-child,
+    table td:last-child {
+        width: 20%;
+        text-align: center;
+    }
+</style>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<div class="row col-12">
+    <div class="col-4  mb-3">
+        <label for="exampleFormControlInput1" class="form-label">search by staff id</label>
+        <input type="text" class="form-control">
+       
+    </div>
+    <div class="col-4  mb-3">
+        <label for="exampleFormControlInput1" class="form-label">search by staff id</label>
+        <input type="text" class="form-control">
+
+    </div>
+    <div class="col-4  mb-3">
+        <label for="exampleFormControlInput1" class="form-label">search by staff id</label>
+        <input type="text" class="form-control">
+
+    </div>
+</div>
+
+<table class="table">
+    <thead class="table-primary">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Birthday)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StaffId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @(item.Gender == 1 ? "Male" : "Female")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Birthday)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.StaffId }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.StaffId }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
